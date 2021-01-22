@@ -12,10 +12,12 @@ export default function Board() {
     if (winner) return;
 
     const squareCopy = squares.slice();
-    squareCopy[i] = xIsNext ? 'X' : 'O';
-    setSquares(squareCopy);
-    setWinner(calculateWinner(squareCopy));
-    setXIsNext(!xIsNext);
+    if (squareCopy[i] === null) {
+      squareCopy[i] = xIsNext ? 'X' : 'O';
+      setSquares(squareCopy);
+      setWinner(calculateWinner(squareCopy));
+      setXIsNext(!xIsNext);
+    }
   }
 
   const renderSquare = (i) => {
